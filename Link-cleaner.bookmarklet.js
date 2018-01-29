@@ -16,6 +16,7 @@ javascript: (function () {
 		[new RegExp(/^http(s)?:\/\/item\.taobao\.com\/item\.htm.*/),["id"],false,new RegExp(/^http(s)?:\/\/item\.taobao\.com\/item\.htm.*/),"https://item.taobao.com/item.htm"],/* Taobao item */
 		[new RegExp(/^http(s)?:\/\/detail\.tmall\.com\/item\.htm.*/),["id"],false,new RegExp(/^http(s)?:\/\/detail\.tmall\.com\/item\.htm.*/),"https://detail.tmall.com/item.htm"],/* Tmall item */
 		[new RegExp(/^http(s)?:\/\/\w+\.(taobao|tmall)\.com\/shop\/view_shop\.htm.*/),[],false,new RegExp(/^http(s)?:\/\/(\w+)\.(taobao|tmall)\.com\/shop\/view_shop\.htm.*/),"https://$2.$3.com/"],/* Taobao/Tmall Shop */
+		[new RegExp(/^http(s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?/),[],false,new RegExp(/^http(s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?/),"https://item.jd.com/$2.html"],/* JD mobile to PC */
 		[new RegExp(/^http(s)?:\/\/(www\.)?greasyfork\.org\/([\w-]*\/)?scripts\/\d+-.*/),[],false,new RegExp(/^http(s)?:\/\/(www\.)?greasyfork\.org\/([\w-]*\/)?scripts\/(\d+)-.*/),"https://greasyfork.org/zh-CN/scripts/$4"],/* Greasyfork Script */
 		[new RegExp(/^http(s)?:\/\/.*/),["id","tid","uid","q","wd","query"],false,new RegExp(/^(http(s)?:\/\/[^?#]*)[?#].*/),"$1"],/* All url */
 	];
