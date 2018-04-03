@@ -23,6 +23,6 @@
 
 如果遇到常见网站未被支持，请告知作者，谢谢。
 
-小书签安装网址（可以很方便的拖拽安装）：https://www.izyx.xyz/bookmarklet
+小书签安装网址（可以很方便的拖拽安装）：https://tools.appinn.com/#/linkcleaner
 
 小书签固定更新页：https://meta.appinn.com/t/topic/3130
