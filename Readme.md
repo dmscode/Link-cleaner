@@ -18,6 +18,7 @@
 * Apple itunes 应用商店（返回中文页面网址）
 * Chrome 扩展商店
 * Greasyfork 脚本页面
+* Bilibili 视频页面
 
 其他未列出网址也可尝试，万一可以用呢？
 

@@ -6,6 +6,12 @@ javascript: (function () {
       query: [],
       hash: true
     },
+    'www.bilibili.com': {/* Blibili */
+      testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
+      replace: 'https://www.bilibili.com/$1',
+      query: ['p'],
+      hash: true
+    },
     'itunes.apple.com': {/* Apple Stroe */
       testReg: /^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
       replace: 'https://itunes.apple.com/cn/$1/$2',
