@@ -6,6 +6,12 @@ javascript: (function () {
       query: [],
       hash: true
     },
+    'www.bilibili.com': {/* Blibili */
+      testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
+      replace: 'https://www.bilibili.com/$1',
+      query: ['p'],
+      hash: true
+    },
     'itunes.apple.com': {/* Apple Stroe */
       testReg: /^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
       replace: 'https://itunes.apple.com/cn/$1/$2',
@@ -51,6 +57,18 @@ javascript: (function () {
     'item.m.jd.com': {/* JD mobile to PC */
       testReg: /^http(?:s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?$/i,
       replace: 'https://item.jd.com/$1.html',
+      query: [],
+      hash: false,
+    },
+    'weibo.com': {/* Weibo personal homepage to mobile */
+      testReg: /^http(?:s)?:\/\/(?:www\.)weibo\.com\/u\/(\d+)(\?.*)?$/i,
+      replace: 'https://m.weibo.cn/$1',
+      query: [],
+      hash: false,
+    },
+    'weibo.com': {/* Weibo article page to mobile */
+      testReg: /^http(?:s)?:\/\/(?:www\.)weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
+      replace: 'https://m.weibo.cn/status/$1',
       query: [],
       hash: false,
     },
