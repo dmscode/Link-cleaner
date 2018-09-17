@@ -60,7 +60,7 @@ javascript: (function () {
       query: [],
       hash: false,
     },
-    'weibo.com': {/* Weibo personal homepage to mobile */
+    'weibo.com/u': {/* Weibo personal homepage to mobile */
       testReg: /^http(?:s)?:\/\/(?:www\.)weibo\.com\/u\/(\d+)(\?.*)?$/i,
       replace: 'https://m.weibo.cn/$1',
       query: [],
@@ -78,6 +78,18 @@ javascript: (function () {
       query: [],
       hash: false,
     },
+    'store.steampowered.com': {/* Steam Store */
+      testReg: /^http(?:s)?:\/\/store\.steampowered\.com\/app\/(\d+)\/.*$/i,
+      replace: 'https://store.steampowered.com/app/$1',
+      query: [],
+      hash: false,
+    },
+    'steamcommunity.com': {/* Steam Workshop */
+      testReg: /^http(?:s)?:\/\/steamcommunity\.com\/app\/(\d+)\/.*$/i,
+      replace: 'https://steamcommunity.com/app/$1',
+      query: [],
+      hash: false,
+    },
     'other': {/* All url */
       testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
       replace: '',
@@ -88,7 +100,7 @@ javascript: (function () {
   const url = window.location.href;
 	const hash = window.location.hash;
   const base = window.location.href.replace(/(\?|#).*$/, '');
-	let pureUrl = '';
+	let pureUrl = url;
   function getQueryString(key) {
     let ret = window.location.search.match(new RegExp('(?:\\?|&)' + key + '=(.*?)(?:&|$|#)', 'i'));
     return ret === null ? '' : ret[1];
