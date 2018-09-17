@@ -78,15 +78,15 @@ javascript: (function () {
       query: [],
       hash: false,
     },
-    'store.steampowered.com': {/* Steam Store */
-      testReg: /^http(?:s)?:\/\/store\.steampowered\.com\/app\/(\d+)\/.*$/i,
-      replace: 'https://store.steampowered.com/app/$1',
+    'store.steampowered.com|steamcommunity.com': {/* Steam */
+      testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,
+      replace: 'https://$1.com/app/$2',
       query: [],
       hash: false,
     },
-    'steamcommunity.com': {/* Steam Workshop */
-      testReg: /^http(?:s)?:\/\/steamcommunity\.com\/app\/(\d+)\/.*$/i,
-      replace: 'https://steamcommunity.com/app/$1',
+    'meta.appinn.com': {/* Appinn BBS */
+      testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t\/(?:[^\/]*\/)*?(\d+).*$/i,
+      replace: 'https://meta.appinn.com/t/$1',
       query: [],
       hash: false,
     },
