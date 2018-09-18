@@ -98,19 +98,19 @@ javascript: (function () {
     },    
   };
   const url = window.location.href;
-	const hash = window.location.hash;
+  const hash = window.location.hash;
   const base = window.location.href.replace(/(\?|#).*$/, '');
-	let pureUrl = url;
+  let pureUrl = url;
   function getQueryString(key) {
     let ret = window.location.search.match(new RegExp('(?:\\?|&)' + key + '=(.*?)(?:&|$|#)', 'i'));
     return ret === null ? '' : ret[1];
   }
-	for(let i in rulers){
+  for(let i in rulers){
     let ruler = rulers[i];
     let reg = ruler.testReg;
     let replace = ruler.replace;
     if (reg.test(url)){
-			let querys = ruler.query;
+      let querys = ruler.query;
       let newQuerys = '';
       if(ruler.query.length){
         for(let j in querys){
@@ -119,30 +119,30 @@ javascript: (function () {
           : '';
         }
       }
-			newQuerys += ruler.hash ? window.location.hash : '';
-			pureUrl = (replace===''?base:base.replace(reg, replace) ) + newQuerys;
+      newQuerys += ruler.hash ? window.location.hash : '';
+      pureUrl = (replace===''?base:base.replace(reg, replace) ) + newQuerys;
       break;
     }
   }
 
-	let newnode =       document.createElement('input');
+  let newnode =       document.createElement('input');
       newnode.id =    'pure-url-for-copy';
       newnode.value = pureUrl;
   document.body.appendChild(newnode);
-	let copyinput = document.getElementById('pure-url-for-copy');
+  let copyinput = document.getElementById('pure-url-for-copy');
       copyinput.select();
-	try {
+  try {
     let copyresult = document.execCommand('copy');
     if(window.location.href === pureUrl){
       window.location.reload();
     }else{
       window.location.href = pureUrl;
     }
-	}catch (err) {
-		let reload = prompt('净化后的网址是：',pureUrl);
-		if (reload != null){
-			window.location.href = pureUrl;
-		}
+  }catch (err) {
+    let reload = prompt('净化后的网址是：',pureUrl);
+    if (reload != null){
+      window.location.href = pureUrl;
+    }
   }
   document.body.removeChild(copyinput);
 })();
