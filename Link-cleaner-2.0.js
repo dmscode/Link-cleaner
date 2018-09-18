@@ -85,7 +85,7 @@ javascript: (function () {
       hash: false,
     },
     'meta.appinn.com': {/* Appinn BBS */
-      testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t\/(?:[^\/]*\/)*?(\d+).*$/i,
+      testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
       replace: 'https://meta.appinn.com/t/$1',
       query: [],
       hash: false,
