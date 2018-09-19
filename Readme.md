@@ -50,7 +50,9 @@
 小书签安装：
 ---
 
-<a href="javascript:(function(){let script=document.createElement('script');script.type='text/javascript';script.src='https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.0.js';document.body.appendChild(script);})();">链接地址洗白白</a>
+**CDN 版：<a href="javascript:(function(){let script=document.createElement('script');script.type='text/javascript';script.src='https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.0.js';document.body.appendChild(script);})();">链接地址洗白白（CDN）</a>** 用起来可能速度快些
+
+**极速更新版：<a href="javascript:(function(){let script=document.createElement('script');script.type='text/javascript';script.src='https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.0.js';document.body.appendChild(script);})();">链接地址洗白白（S）</a>** 第一时间获得规则更新
 
 （将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
 
