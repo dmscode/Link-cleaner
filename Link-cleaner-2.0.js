@@ -1,3 +1,4 @@
+/* V2.1.0 2018-09-19 19:04:34 */
 javascript: (function () {
   const rulers = {
     'tools.appinn.com': {/* 小众工具站，保留 hash */
