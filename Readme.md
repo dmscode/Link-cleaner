@@ -1,5 +1,11 @@
-链接地址洗白白 V2.2.2
+链接地址洗白白
 ===
+
+当前版本：
+---
+
+### 规则版本：V2.2.0
+### 书签版本：B0.1
 
 这是什么：
 ---
@@ -38,6 +44,9 @@
 
 更新日志：
 ---
+### B0.1 2018.09.20
+
+* 区分规则和小书签版本
 
 ### V2.2.0 2018.09.20
 
@@ -52,7 +61,7 @@
 * 从此版本开始，小书签支持自动更新
 
 
-小书签安装：
+小书签安装（B0.1）：
 ---
 
 **CDN 版：<a href="javascript: (function () { let script = document.createElement('script'); script.type = 'text/javascript'; script.src = 'https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.2.js'; document.body.appendChild(script); function wait_for_script_load () { if(typeof(dms_get_pure_url) === 'function'){ dms_get_pure_url(); }else{ window.setTimeout(wait_for_script_load, 100); } }; wait_for_script_load(); })();">链接地址洗白白（CDN）</a>** 用起来可能速度快些
