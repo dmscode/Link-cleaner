@@ -1,4 +1,4 @@
-链接地址洗白白 V2.2.1
+链接地址洗白白 V2.2.2
 ===
 
 这是什么：
@@ -38,9 +38,6 @@
 
 更新日志：
 ---
-### V2.2.1 2018.09.20
-
-* 修正几个函数名错误
 
 ### V2.2.0 2018.09.20
 
@@ -58,9 +55,9 @@
 小书签安装：
 ---
 
-**CDN 版：<a href="javascript: (function () { let script = document.createElement('script'); script.type = 'text/javascript'; script.src = 'https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.2.js'; document.body.appendChild(script); var wait_for_script_load = function (){ if(typeof(dms_get_pure_url) === 'function'){ dms_get_pure_url(); }else{ window.setTimeout(wait_for_script_load, 100); } }(); })();">链接地址洗白白（CDN）</a>** 用起来可能速度快些
+**CDN 版：<a href="javascript: (function () { let script = document.createElement('script'); script.type = 'text/javascript'; script.src = 'https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.2.js'; document.body.appendChild(script); function wait_for_script_load () { if(typeof(dms_get_pure_url) === 'function'){ dms_get_pure_url(); }else{ window.setTimeout(wait_for_script_load, 100); } }; wait_for_script_load(); })();">链接地址洗白白（CDN）</a>** 用起来可能速度快些
 
-**极速更新版：<a href="javascript: (function () { let script = document.createElement('script'); script.type = 'text/javascript'; script.src = 'https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.2.js'; document.body.appendChild(script); var wait_for_script_load = function (){ if(typeof(dms_get_pure_url) === 'function'){ dms_get_pure_url(); }else{ window.setTimeout(wait_for_script_load, 100); } }(); })();">链接地址洗白白（S）</a>** 第一时间获得规则更新
+**极速更新版：<a href="javascript: (function () { let script = document.createElement('script'); script.type = 'text/javascript'; script.src = 'https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.2.js'; document.body.appendChild(script); function wait_for_script_load () { if(typeof(dms_get_pure_url) === 'function'){ dms_get_pure_url(); }else{ window.setTimeout(wait_for_script_load, 100); } }; wait_for_script_load(); })();">链接地址洗白白（S）</a>** 第一时间获得规则更新
 
 （将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
 
