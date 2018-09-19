@@ -52,7 +52,16 @@
 
 <a href="javascript:(function(){let script=document.createElement('script');script.type='text/javascript';script.src='https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-2.0.js';document.body.appendChild(script);})();">链接地址洗白白</a>
 
-（将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面**）
+（将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
+
+请我喝杯咖啡吧
+---
+
+如果觉得这个小书签对你有帮助，能不能微信扫描二维码，请我喝一杯咖啡？
+
+毕竟，规则自动更新了，如没有极特殊情况，我也不会做更新提醒的。所以，差不多安装以后就再也不会回来看我了。
+
+![请我喝杯咖啡吧~](./qrcode.png)
 
 更新地址：
 ---
