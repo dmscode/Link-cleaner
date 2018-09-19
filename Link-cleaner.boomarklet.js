@@ -5,7 +5,7 @@ javascript: (function () {
   document.body.appendChild(script);
   let wait_for_script_load = function (){
     if(typeof(dms_get_pure_url) === 'function'){
-      get_pure_url();
+      dms_get_pure_url();
     }else{
       window.setTimeout(wait_for_script_load, 100);
     }
