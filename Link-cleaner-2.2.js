@@ -1,5 +1,5 @@
-/* V2.1.1 2018-09-19 22:43:40 */
-function get_pure_url () {
+/* V2.2.0 2018-09-20 00:07:13 */
+function dms_get_pure_url () {
   const rulers = {
     'tools.appinn.com': {/* 小众工具站，保留 hash */
       testReg: /^http(s)?:\/\/tools\.appinn\.com\/.*$/i,
