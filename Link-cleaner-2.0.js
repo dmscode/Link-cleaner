@@ -1,4 +1,4 @@
-/* V2.1.0 2018-09-19 19:04:34 */
+/* V2.1.1 2018-09-19 22:43:40 */
 javascript: (function () {
   const rulers = {
     'tools.appinn.com': {/* 小众工具站，保留 hash */
@@ -96,7 +96,7 @@ javascript: (function () {
       replace: '',
       query: ['id', 'tid', 'uid', 'q', 'wd', 'query'],
       hash: false,
-    },    
+    }
   };
   const url = window.location.href;
   const hash = window.location.hash;
@@ -113,10 +113,10 @@ javascript: (function () {
     if (reg.test(url)){
       let querys = ruler.query;
       let newQuerys = '';
-      if(ruler.query.length){
-        for(let j in querys){
-          newQuerys += getQueryString(querys[j]) !== ''
-          ? (newQuerys.length?'&':'?')+querys[j]+'='+getQueryString(querys[j])
+      if(querys.length){
+        for(let query of querys){
+          newQuerys += getQueryString(query) !== ''
+          ? (newQuerys.length?'&':'?')+query+'='+getQueryString(query)
           : '';
         }
       }
@@ -126,8 +126,8 @@ javascript: (function () {
     }
   }
 
-  let newnode =       document.createElement('input');
-      newnode.id =    'pure-url-for-copy';
+  let newnode = document.createElement('input');
+      newnode.id = 'pure-url-for-copy';
       newnode.value = pureUrl;
   document.body.appendChild(newnode);
   let copyinput = document.getElementById('pure-url-for-copy');
