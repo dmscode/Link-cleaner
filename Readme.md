@@ -72,7 +72,7 @@
 
 **极速更新版：<a href="javascript:(function(){var dms_bookmarklet_version=0.2;let script=document.createElement('script');script.type='text/javascript';script.src='https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);function dms_wait_for_script_load(){if(typeof(dms_get_pure_url)==='function'){dms_get_pure_url()}else{window.setTimeout(dms_wait_for_script_load,100)}};dms_wait_for_script_load()})()">链接地址洗白白（S）</a>** 第一时间获得规则更新
 
-（将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
+（将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**，安装后第一次使用可能需要点击两次才能正常复制）
 
 请我喝杯咖啡吧
 ---
