@@ -5,7 +5,7 @@
 ---
 
 ### 规则版本：V2.2.0
-### 书签版本：B0.2
+### 书签版本：B0.3
 
 这是什么：
 ---
@@ -44,6 +44,10 @@
 
 更新日志：
 ---
+### B0.3 2018.09.20
+
+* 降低小书签轮询次数和函数嵌套层级，以期提升稳定性
+
 ### B0.2 2018.09.20
 
 * 增加小书签版本号，方便日后提醒升级
@@ -65,12 +69,12 @@
 * 从此版本开始，小书签支持自动更新
 
 
-小书签安装（B0.2）：
+小书签安装（B0.3）：
 ---
 
-**CDN 版：<a href="javascript:(function(){var dms_bookmarklet_version=0.2;let script=document.createElement('script');script.type='text/javascript';script.src='https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);function dms_wait_for_script_load(){if(typeof(dms_get_pure_url)==='function'){dms_get_pure_url()}else{window.setTimeout(dms_wait_for_script_load,100)}};dms_wait_for_script_load()})()">链接地址洗白白（CDN）</a>** 用起来可能速度快些
+**CDN 版：<a href="javascript:(function(){var dms_bookmarklet_version=0.3;let script=document.createElement('script');script.type='text/javascript';script.src='https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);window.setInterval(function(){if(typeof(dms_get_pure_url)==='function'){window.clearInterval();dms_get_pure_url()}},300)})()">链接地址洗白白（CDN）</a>** 用起来可能速度快些
 
-**极速更新版：<a href="javascript:(function(){var dms_bookmarklet_version=0.2;let script=document.createElement('script');script.type='text/javascript';script.src='https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);function dms_wait_for_script_load(){if(typeof(dms_get_pure_url)==='function'){dms_get_pure_url()}else{window.setTimeout(dms_wait_for_script_load,100)}};dms_wait_for_script_load()})()">链接地址洗白白（S）</a>** 第一时间获得规则更新
+**极速更新版：<a href="javascript:(function(){var dms_bookmarklet_version=0.3;let script=document.createElement('script');script.type='text/javascript';script.src='https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);window.setInterval(function(){if(typeof(dms_get_pure_url)==='function'){window.clearInterval();dms_get_pure_url()}},300)})()">链接地址洗白白（S）</a>** 第一时间获得规则更新
 
 （将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**，安装后第一次使用可能需要点击两次才能正常复制）
 
