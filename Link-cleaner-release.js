@@ -1,4 +1,4 @@
-/* V2.2.0 2018-09-20 00:07:13 */
+/* V2.2.1 2018-09-26 17:52:32 */
 function dms_get_pure_url () {
   const rulers = {
     'tools.appinn.com': {/* 小众工具站，保留 hash */
@@ -62,13 +62,13 @@ function dms_get_pure_url () {
       hash: false,
     },
     'weibo.com/u': {/* Weibo personal homepage to mobile */
-      testReg: /^http(?:s)?:\/\/(?:www\.)weibo\.com\/u\/(\d+)(\?.*)?$/i,
+      testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
       replace: 'https://m.weibo.cn/$1',
       query: [],
       hash: false,
     },
     'weibo.com': {/* Weibo article page to mobile */
-      testReg: /^http(?:s)?:\/\/(?:www\.)weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
+      testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
       replace: 'https://m.weibo.cn/status/$1',
       query: [],
       hash: false,
