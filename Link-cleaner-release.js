@@ -1,4 +1,4 @@
-/* V2.2.1 2018-09-26 17:52:32 */
+/* V2.2.2 2018-09-30 19:01:27 */
 function dms_get_pure_url () {
   const rulers = {
     'tools.appinn.com': {/* 小众工具站，保留 hash */
@@ -94,7 +94,7 @@ function dms_get_pure_url () {
     'other': {/* All url */
       testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
       replace: '',
-      query: ['id', 'tid', 'uid', 'q', 'wd', 'query'],
+      query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword'],
       hash: false,
     }
   };
