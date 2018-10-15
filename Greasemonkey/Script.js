@@ -3,7 +3,7 @@
 // @namespace Daomouse Link Cleaner
 // @version 0.0.1
 // @author 稻米鼠
-// @description 把链接地址减至最短可用状态，并复制到剪切板，以方便分享
+// @description 把链接地址减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @homepage https://dmscode.github.io/Link-cleaner/
 // @updateURL 
 // @downloadURL 
