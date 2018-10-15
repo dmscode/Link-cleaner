@@ -11,7 +11,6 @@
 // @match *://*/*
 // @grant GM_setClipboard
 // @grant GM_notification
-// @require 
 // @noframes
 // ==/UserScript==
 
