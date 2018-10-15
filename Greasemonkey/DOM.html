@@ -1,0 +1,106 @@
+<style>
+#dms-link-cleaner {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 99999999;
+}
+#dms-lc-button {
+  position: relative;
+  margin: 0 auto;
+  width: 24px;
+  height: 12px;
+  color: #999;
+  font-size: 12px;
+  line-height: 10px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #AAA;
+  border-radius: 12px 12px 0 0;
+  background-color: #FFF;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+}
+#dms-lc-panel {
+  display: none;
+  border-top: 5px solid #65adff;
+  background-color: #FFF;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+}
+#dms-lc-panel > #dms-lc-panel-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 none;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 0;
+  text-align: center;
+  position: relative;
+}
+#dms-lc-panel > #dms-lc-panel-content > .dms-lc-button {
+  padding: 8px 16px;
+  margin: 0 8px 0 0;
+  font-size: 16px;
+  line-height: 1.2em;
+  font-weight: lighter;
+  border: 1px solid #65adff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#dms-lc-panel > #dms-lc-panel-content > .dms-lc-button:hover {
+  border: 1px solid #0062d1;
+  background-color: #0062d1;
+  color: #FFF;
+  font-weight: normal;
+}
+#dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee {
+  padding: 0;
+  margin: 0;
+}
+#dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee > svg {
+  width: 35px;
+  height: 35px;
+}
+#dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee > #dms-lc-qrcode {
+  display: none;
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  bottom: 100px;
+  padding: 16px;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.2em;
+  border: 1px solid #AAA;
+  border-radius: 12px 12px 0 0;
+  background-color: #FFF;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, .15);
+}
+#dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee > #dms-lc-qrcode > img {
+  width: 30%;
+  max-width: 180px;
+}
+</style>
+<div id="dms-lc-button">
+  ︽
+</div>
+<div id="dms-lc-panel">
+  <div id="dms-lc-panel-content">
+    <div class="dms-lc-button" id="dmsCLButtonTitle">洗白白 & 带标题</div>
+    <div class="dms-lc-button" id="dmsCLButtonPure">链接地址洗白白</div>
+    <div class="dms-lc-button" id="dmsCLButtonLink">申请适配此网站</div>
+    <div class="dms-lc-button" id="dmsCLButtonCoffee">
+      <svg t="1539507279741" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1618" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M237.717333 320L277.333333 597.333333h469.333334l39.616-277.333333z" fill="#FFC107" p-id="1619"></path><path d="M832 320v-53.333333a32 32 0 0 0-32-32h-576A32 32 0 0 0 192 266.666667V320h640z" fill="#795548" p-id="1620"></path><path d="M280.384 618.666667L320 896h384l39.616-277.333333z" fill="#77574F" p-id="1621"></path><path d="M512 597.333333m-106.666667 0a106.666667 106.666667 0 1 0 213.333334 0 106.666667 106.666667 0 1 0-213.333334 0Z" fill="#77574F" p-id="1622"></path><path d="M426.666667 597.333333c0-15.616 4.501333-30.058667 11.84-42.666666h-167.253334l15.232 106.666666h169.621334A84.778667 84.778667 0 0 1 426.666667 597.333333zM585.493333 554.666667c7.338667 12.608 11.84 27.050667 11.84 42.666666a84.778667 84.778667 0 0 1-29.44 64h169.621334l15.232-106.666666h-167.253334zM768 128H256l-21.333333 106.666667h554.666666z" fill="#4E342E" p-id="1623"></path><path d="M512 448a149.333333 149.333333 0 1 1 0 298.666667 149.333333 149.333333 0 0 1 0-298.666667m0-21.333333c-94.101333 0-170.666667 76.565333-170.666667 170.666666s76.565333 170.666667 170.666667 170.666667 170.666667-76.565333 170.666667-170.666667-76.565333-170.666667-170.666667-170.666666z" fill="#5D4037" p-id="1624"></path><path d="M512 448a149.333333 149.333333 0 1 0 0 298.666667 149.333333 149.333333 0 0 0 0-298.666667z m0 234.666667a85.333333 85.333333 0 1 1 0-170.666667 85.333333 85.333333 0 0 1 0 170.666667z" fill="#FFF3E0" p-id="1625"></path></svg>
+      <div id="dms-lc-qrcode">
+        链接地址洗白白，作者同学很可爱<br />
+        扫码请杯热咖啡，规则更新更勤快
+        <hr />
+        <img src="images/AliPay-360.png" alt="支付宝">
+        <img src="images/WePay-360.png" alt="微信">
+        <img src="images/QQPay-360.png" alt="QQ">
+      </div>
+    </div>
+  </div>
+</div>
