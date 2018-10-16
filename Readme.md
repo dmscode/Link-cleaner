@@ -1,6 +1,8 @@
 链接地址洗白白
 ===
 
+**新增 Greasemonkey（油猴子）版本**：https://greasyfork.org/zh-CN/scripts/373270
+
 当前版本：
 ---
 

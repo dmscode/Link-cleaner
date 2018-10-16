@@ -13,6 +13,7 @@ const readFileContent = function(fileName, isBase64=false){
 
 let content = readFileContent('Script.js')
 let DOMCode = readFileContent('DOM.html')
+let mainJS = readFileContent('../main.js')
 
 let imgArray = DOMCode.match(/"images\/[^"]*\.png"/gi)
 if(imgArray !== null){
@@ -24,7 +25,6 @@ if(imgArray !== null){
 }
 
 DOMCode = '`' + DOMCode + '`'
-let mainJS = readFileContent('main.js')
 content = content.replace(/``/, DOMCode)
 content = content.replace(/main\.js/i, mainJS)
 
