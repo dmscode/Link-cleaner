@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.2
+// @version 0.0.3
 // @author 稻米鼠
-// @description 把链接地址减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
+// @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @homepage https://dmscode.github.io/Link-cleaner/
 // @updateURL 
 // @downloadURL 
@@ -62,7 +62,8 @@ buttonCoffee.addEventListener("click", () =>{ dmsLCToggleEl(qrcode) }, false)
 buttonLink.addEventListener("click", () =>{ window.open('https://meta.appinn.com/t/7363', '_blank'); }, false)
 /* 复制标题和链接 */
 buttonTitle.addEventListener("click", () =>{
-  const ttileAndUrl = document.title +' '+ dms_get_pure_url()
+  const pureUrl = dms_get_pure_url()
+  const ttileAndUrl = document.title +' '+ pureUrl
   GM_setClipboard(ttileAndUrl)
   dmsCLNotification('网站标题 & 链接地址已复制到剪切板中~')
   window.location.href = pureUrl
