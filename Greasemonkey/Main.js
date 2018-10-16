@@ -1,12 +1,6 @@
-/* V2.2.2 2018-09-30 19:01:27 */
+/* V2.2.3 2018-10-16 14:06:28 */
 function dms_get_pure_url () {
   const rulers = {
-    'tools.appinn.com': {/* 小众工具站，保留 hash */
-      testReg: /^http(s)?:\/\/tools\.appinn\.com\/.*$/i,
-      replace: '',
-      query: [],
-      hash: true
-    },
     'www.bilibili.com': {/* Blibili */
       testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
       replace: 'https://www.bilibili.com/$1',
@@ -89,6 +83,12 @@ function dms_get_pure_url () {
       testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
       replace: 'https://meta.appinn.com/t/$1',
       query: [],
+      hash: false,
+    },
+    'yangkeduo.com': {/* Pin Duo Duo product Page */
+      testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
+      replace: '',
+      query: ['goods_id'],
       hash: false,
     },
     'other': {/* All url */
