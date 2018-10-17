@@ -12,6 +12,7 @@ const readFileContent = function(fileName, isBase64=false){
 }
 
 let content = readFileContent('Script.js')
+let styleCSS = readFileContent('Style.css')
 let DOMCode = readFileContent('DOM.html')
 let mainJS = readFileContent('../main.js')
 
@@ -24,9 +25,9 @@ if(imgArray !== null){
   });
 }
 
-DOMCode = '`' + DOMCode + '`'
-content = content.replace(/``/, DOMCode)
-content = content.replace(/main\.js/i, mainJS)
+content = content.replace(/DOM\.html/, DOMCode)
+content = content.replace(/Main\.js/i, mainJS)
+content = content.replace(/Style\.css/i, styleCSS)
 
 fs.writeFile('./dist/Link-Cleaner.user.js',
               content,
