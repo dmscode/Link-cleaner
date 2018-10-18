@@ -58,7 +58,7 @@ Greasemonkey（油猴子）版本：
 请我喝杯咖啡吧
 ---
 
-如果觉得这个小书签对你有帮助，能不能微信扫描二维码，请我喝一杯咖啡？
+如果觉得这个小书签对你有帮助，能不能扫描二维码，请我喝一杯咖啡？
 
 ![请我喝杯咖啡吧~](./Greasemonkey/images/AliPay-360.png)
 ![请我喝杯咖啡吧~](./Greasemonkey/images/WePay-360.png)
