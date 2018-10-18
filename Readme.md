@@ -1,13 +1,23 @@
 链接地址洗白白
 ===
 
-**新增 Greasemonkey（油猴子）版本**：https://greasyfork.org/zh-CN/scripts/373270
-
-当前版本：
+Greasemonkey（油猴子）版本：
 ---
 
-### 规则版本：V2.2.2
-### 书签版本：B0.3
+[https://greasyfork.org/zh-CN/scripts/373270](https://greasyfork.org/zh-CN/scripts/373270)
+
+小书签安装：
+---
+
+<a href="javascript:(function(){const rulers={'www.bilibili.com':{testReg:/^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,replace:'https://www.bilibili.com/$1',query:['p'],hash:!0},'itunes.apple.com':{testReg:/^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,replace:'https://itunes.apple.com/cn/$1/$2',query:[],hash:!1},'chrome.google.com/webstore':{testReg:/^http(?:s)?:\/\/chrome\.google\.com\/webstore\/detail\/[^\/]+\/([a-z]{32}).*/i,replace:'https://chrome.google.com/webstore/detail/$1',query:[],hash:!1},'s.taobao.com':{testReg:/^http(?:s)?:\/\/s\.taobao\.com\/search.*$/i,replace:'https://s.taobao.com/search',query:['q'],hash:!1},'list.tmall.com':{testReg:/^http(?:s)?:\/\/list\.tmall\.com\/search_product\.htm.*$/i,replace:'https://list.tmall.com/search_product.htm',query:['q'],hash:!1},'item.taobao.com':{testReg:/^http(?:s)?:\/\/item\.taobao\.com\/item\.htm.*$/i,replace:'https://item.taobao.com/item.htm',query:['id'],hash:!1},'detail.tmall.com':{testReg:/^http(?:s)?:\/\/detail\.tmall\.com\/item\.htm.*$/i,replace:'https://detail.tmall.com/item.htm',query:['id'],hash:!1},'taobao/tmall.com/shop':{testReg:/^http(?:s)?:\/\/(\w+)\.(taobao|tmall)\.com\/shop\/view_shop\.htm.*$/i,replace:'https://$1.$2.com/',query:[],hash:!1},'item.m.jd.com':{testReg:/^http(?:s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?$/i,replace:'https://item.jd.com/$1.html',query:[],hash:!1},'weibo.com/u':{testReg:/^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,replace:'https://m.weibo.cn/$1',query:[],hash:!1},'weibo.com':{testReg:/^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,replace:'https://m.weibo.cn/status/$1',query:[],hash:!1},'greasyfork.org':{testReg:/^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-.*$/i,replace:'https://greasyfork.org/zh-CN/scripts/$1',query:[],hash:!1},'store.steampowered.com|steamcommunity.com':{testReg:/^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,replace:'https://$1.com/app/$2',query:[],hash:!1},'meta.appinn.com':{testReg:/^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,replace:'https://meta.appinn.com/t/$1',query:[],hash:!1},'yangkeduo.com':{testReg:/^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,replace:'',query:['goods_id'],hash:!1},other:{testReg:/^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,replace:'',query:['id','tid','uid','q','wd','query','keyword'],hash:!1}};const pureUrl=function(url=window.location.href){const hash=url.replace(/^[^#]*(#.*)?$/,'$1'),base=url.replace(/(\?|#).*$/,'');let pureUrl=url;function getQueryString(key){let ret=url.match(new RegExp('(?:\\?|&)'+key+'=([^?#&]*)','i'));return null===ret?'':ret[1]}for(let i in rulers){let ruler=rulers[i],reg=ruler.testReg,replace=ruler.replace;if(reg.test(url)){let querys=ruler.query,newQuerys='';if(querys.length)for(let query of querys)newQuerys+=''!==getQueryString(query)?(newQuerys.length?'&':'?')+query+'='+getQueryString(query):'';newQuerys+=ruler.hash?hash:'',pureUrl=(''===replace?base:base.replace(reg,replace))+newQuerys;break}}return pureUrl}();let newnode=document.createElement('input');newnode.id='pure-url-for-copy',newnode.value=pureUrl,document.body.appendChild(newnode);let copyinput=document.getElementById('pure-url-for-copy');copyinput.select();try{document.execCommand('copy');window.location.href===pureUrl?window.location.reload():window.location.href=pureUrl}catch(err){null!=prompt('净化后的网址是：',pureUrl)&&(window.location.href=pureUrl)}document.body.removeChild(copyinput)})();">链接地址洗白白</a>**
+
+（将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
+
+
+更新地址：
+---
+
+[https://dmscode.github.io/Link-cleaner/](https://dmscode.github.io/Link-cleaner/)
 
 这是什么：
 ---
@@ -34,6 +44,7 @@
 * 微博个人主页及单条微博页面（会强转为清爽的 HTML5 版）
 * Steam 商店和创意工坊列表
 * 小众软件论坛
+* 拼多多
 * 其他较规范的网址
 
 如果遇到常见网站未被支持，请告知作者，谢谢。
@@ -44,56 +55,11 @@
 ---
 2018.09.30
 
-更新日志：
----
-###V2.2.2 2018.09.30
-
-* 在通用适配规则里加入了京东搜索页的关键词 keyword
-
-### B0.3 2018.09.20
-
-* 降低小书签轮询次数和函数嵌套层级，以期提升稳定性
-
-### B0.2 2018.09.20
-
-* 增加小书签版本号，方便日后提醒升级
-
-### B0.1 2018.09.20
-
-* 区分规则和小书签版本
-
-### V2.2.0 2018.09.20
-
-* 修复新版小书签无法复制问题
-
-### V2.1.1 2018.09.19
-
-* Fix bug
-
-### V2.1.0 2018.09.19
-
-* 从此版本开始，小书签支持自动更新
-
-
-小书签安装（B0.3）：
----
-
-**CDN 版：<a href="javascript:(function(){var dms_bookmarklet_version=0.3;let script=document.createElement('script');script.type='text/javascript';script.src='https://cdn.rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);window.setInterval(function(){if(typeof(dms_get_pure_url)==='function'){window.clearInterval();dms_get_pure_url()}},300)})()">链接地址洗白白（CDN）</a>** 用起来可能速度快些
-
-**极速更新版：<a href="javascript:(function(){var dms_bookmarklet_version=0.3;let script=document.createElement('script');script.type='text/javascript';script.src='https://rawgit.com/dmscode/Link-cleaner/master/Link-cleaner-release.js';document.body.appendChild(script);window.setInterval(function(){if(typeof(dms_get_pure_url)==='function'){window.clearInterval();dms_get_pure_url()}},300)})()">链接地址洗白白（S）</a>** 第一时间获得规则更新
-
-（将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**，安装后第一次使用可能需要点击两次才能正常复制）
-
 请我喝杯咖啡吧
 ---
 
 如果觉得这个小书签对你有帮助，能不能微信扫描二维码，请我喝一杯咖啡？
 
-毕竟，规则自动更新了，如没有极特殊情况，我也不会做更新提醒的。所以，差不多安装以后就再也不会回来看我了。
-
-![请我喝杯咖啡吧~](./qrcode.png)
-
-更新地址：
----
-
-[https://dmscode.github.io/Link-cleaner/](https://dmscode.github.io/Link-cleaner/)
+![请我喝杯咖啡吧~](./Greasemonkey/images/AliPay-360.png)
+![请我喝杯咖啡吧~](./Greasemonkey/images/WePay-360.png)
+![请我喝杯咖啡吧~](./Greasemonkey/images/QQPay-360.png)

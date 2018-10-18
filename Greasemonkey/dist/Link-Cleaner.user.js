@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.6
+// @version 0.0.7
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @homepage https://dmscode.github.io/Link-cleaner/
@@ -14,6 +14,17 @@
 // @grant GM_addStyle
 // @noframes
 // ==/UserScript==
+
+/**
+ * 声明：本页面代码未作任何压缩处理
+ * 但不意味着作者允许任何形式的——
+ * 借用、抄袭、修改……
+ * 未经作者允许，仅有权使用，及分享
+ * 且分享必须在鲜明位置给出本脚本在
+ * Greasemonkey 中的发布地址
+ * 作者未授权任何其他网站提供下载！
+ * 开源不等于任君自取，自重！！！
+ */
 
 /** 添加样式 **/
 GM_addStyle(`
@@ -57,6 +68,7 @@ GM_addStyle(`
   justify-content: center;
   align-items: center;
   flex: 1 1 none;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -117,9 +129,10 @@ dmsLCPopPanel.innerHTML = `<div id="dms-lc-button">
 </div>
 <div id="dms-lc-panel">
   <div id="dms-lc-panel-content">
-    <div class="dms-lc-button" id="dmsCLButtonTitle">洗白白 & 带标题</div>
+    <div class="dms-lc-button" id="dmsCLButtonTitle">带标题复制</div>
     <div class="dms-lc-button" id="dmsCLButtonPure">链接地址洗白白</div>
-    <div class="dms-lc-button" id="dmsCLButtonLink">申请适配此网站</div>
+    <div class="dms-lc-button" id="dmsCLButtonCleanAll">净化页面所有链接</div>
+    <div class="dms-lc-button" id="dmsCLButtonLink">找作者</div>
     <div class="dms-lc-button" id="dmsCLButtonCoffee">
       <svg t="1539507279741" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1618" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M237.717333 320L277.333333 597.333333h469.333334l39.616-277.333333z" fill="#FFC107" p-id="1619"></path><path d="M832 320v-53.333333a32 32 0 0 0-32-32h-576A32 32 0 0 0 192 266.666667V320h640z" fill="#795548" p-id="1620"></path><path d="M280.384 618.666667L320 896h384l39.616-277.333333z" fill="#77574F" p-id="1621"></path><path d="M512 597.333333m-106.666667 0a106.666667 106.666667 0 1 0 213.333334 0 106.666667 106.666667 0 1 0-213.333334 0Z" fill="#77574F" p-id="1622"></path><path d="M426.666667 597.333333c0-15.616 4.501333-30.058667 11.84-42.666666h-167.253334l15.232 106.666666h169.621334A84.778667 84.778667 0 0 1 426.666667 597.333333zM585.493333 554.666667c7.338667 12.608 11.84 27.050667 11.84 42.666666a84.778667 84.778667 0 0 1-29.44 64h169.621334l15.232-106.666666h-167.253334zM768 128H256l-21.333333 106.666667h554.666666z" fill="#4E342E" p-id="1623"></path><path d="M512 448a149.333333 149.333333 0 1 1 0 298.666667 149.333333 149.333333 0 0 1 0-298.666667m0-21.333333c-94.101333 0-170.666667 76.565333-170.666667 170.666666s76.565333 170.666667 170.666667 170.666667 170.666667-76.565333 170.666667-170.666667-76.565333-170.666667-170.666667-170.666666z" fill="#5D4037" p-id="1624"></path><path d="M512 448a149.333333 149.333333 0 1 0 0 298.666667 149.333333 149.333333 0 0 0 0-298.666667z m0 234.666667a85.333333 85.333333 0 1 1 0-170.666667 85.333333 85.333333 0 0 1 0 170.666667z" fill="#FFF3E0" p-id="1625"></path></svg>
       <div id="dms-lc-qrcode">
@@ -137,112 +150,117 @@ document.body.insertBefore(dmsLCPopPanel, document.body.lastChild.nextSibling)
 
 /** 主功能函数 **/
 
-/* V2.2.3 2018-10-16 14:06:28 */
-function dms_get_pure_url () {
-  const rulers = {
-    'www.bilibili.com': {/* Blibili */
-      testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
-      replace: 'https://www.bilibili.com/$1',
-      query: ['p'],
-      hash: true
-    },
-    'itunes.apple.com': {/* Apple Stroe */
-      testReg: /^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
-      replace: 'https://itunes.apple.com/cn/$1/$2',
-      query: [],
-      hash: false
-    },
-    'chrome.google.com/webstore': {/* Chrome Store */
-      testReg: /^http(?:s)?:\/\/chrome\.google\.com\/webstore\/detail\/[^\/]+\/([a-z]{32}).*/i,
-      replace: 'https://chrome.google.com/webstore/detail/$1',
-      query: [],
-      hash: false
-    },
-    's.taobao.com': {/* Taobao Search */
-      testReg: /^http(?:s)?:\/\/s\.taobao\.com\/search.*$/i,
-      replace: 'https://s.taobao.com/search',
-      query: ['q'],
-      hash: false,
-    },
-    'list.tmall.com': {/* Tmall Search */
-      testReg: /^http(?:s)?:\/\/list\.tmall\.com\/search_product\.htm.*$/i,
-      replace: 'https://list.tmall.com/search_product.htm',
-      query: ['q'],
-      hash: false,
-    },
-    'item.taobao.com': {/* Taobao item */
-      testReg: /^http(?:s)?:\/\/item\.taobao\.com\/item\.htm.*$/i,
-      replace: 'https://item.taobao.com/item.htm',
-      query: ['id'],
-      hash: false,
-    },
-    'detail.tmall.com': {/* Tmall item */
-      testReg: /^http(?:s)?:\/\/detail\.tmall\.com\/item\.htm.*$/i,
-      replace: 'https://detail.tmall.com/item.htm',
-      query: ['id'],
-      hash: false,
-    },
-    'taobao/tmall.com/shop': {/* Taobao/Tmall Shop */
-      testReg: /^http(?:s)?:\/\/(\w+)\.(taobao|tmall)\.com\/shop\/view_shop\.htm.*$/i,
-      replace: 'https://$1.$2.com/',
-      query: [],
-      hash: false,
-    },
-    'item.m.jd.com': {/* JD mobile to PC */
-      testReg: /^http(?:s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?$/i,
-      replace: 'https://item.jd.com/$1.html',
-      query: [],
-      hash: false,
-    },
-    'weibo.com/u': {/* Weibo personal homepage to mobile */
-      testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
-      replace: 'https://m.weibo.cn/$1',
-      query: [],
-      hash: false,
-    },
-    'weibo.com': {/* Weibo article page to mobile */
-      testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
-      replace: 'https://m.weibo.cn/status/$1',
-      query: [],
-      hash: false,
-    },
-    'greasyfork.org': {/* Greasyfork Script */
-      testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-.*$/i,
-      replace: 'https://greasyfork.org/zh-CN/scripts/$1',
-      query: [],
-      hash: false,
-    },
-    'store.steampowered.com|steamcommunity.com': {/* Steam */
-      testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,
-      replace: 'https://$1.com/app/$2',
-      query: [],
-      hash: false,
-    },
-    'meta.appinn.com': {/* Appinn BBS */
-      testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
-      replace: 'https://meta.appinn.com/t/$1',
-      query: [],
-      hash: false,
-    },
-    'yangkeduo.com': {/* Pin Duo Duo product Page */
-      testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
-      replace: '',
-      query: ['goods_id'],
-      hash: false,
-    },
-    'other': {/* All url */
-      testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
-      replace: '',
-      query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword'],
-      hash: false,
-    }
+/**
+ * 链接净化规则
+ * version 0.0.1
+ * update 2018-10-18 11:52:26
+ * 规则说明：
+ * 
+ */
+const rulers = {
+  'www.bilibili.com': {/* Blibili */
+    testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
+    replace: 'https://www.bilibili.com/$1',
+    query: ['p'],
+    hash: true
+  },
+  'itunes.apple.com': {/* Apple Stroe */
+    testReg: /^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
+    replace: 'https://itunes.apple.com/cn/$1/$2',
+    query: [],
+    hash: false
+  },
+  'chrome.google.com/webstore': {/* Chrome Store */
+    testReg: /^http(?:s)?:\/\/chrome\.google\.com\/webstore\/detail\/[^\/]+\/([a-z]{32}).*/i,
+    replace: 'https://chrome.google.com/webstore/detail/$1',
+    query: [],
+    hash: false
+  },
+  's.taobao.com': {/* Taobao Search */
+    testReg: /^http(?:s)?:\/\/s\.taobao\.com\/search.*$/i,
+    replace: 'https://s.taobao.com/search',
+    query: ['q'],
+    hash: false,
+  },
+  'list.tmall.com': {/* Tmall Search */
+    testReg: /^http(?:s)?:\/\/list\.tmall\.com\/search_product\.htm.*$/i,
+    replace: 'https://list.tmall.com/search_product.htm',
+    query: ['q'],
+    hash: false,
+  },
+  'item.taobao.com': {/* Taobao item */
+    testReg: /^http(?:s)?:\/\/item\.taobao\.com\/item\.htm.*$/i,
+    replace: 'https://item.taobao.com/item.htm',
+    query: ['id'],
+    hash: false,
+  },
+  'detail.tmall.com': {/* Tmall item */
+    testReg: /^http(?:s)?:\/\/detail\.tmall\.com\/item\.htm.*$/i,
+    replace: 'https://detail.tmall.com/item.htm',
+    query: ['id'],
+    hash: false,
+  },
+  'taobao/tmall.com/shop': {/* Taobao/Tmall Shop */
+    testReg: /^http(?:s)?:\/\/(\w+)\.(taobao|tmall)\.com\/shop\/view_shop\.htm.*$/i,
+    replace: 'https://$1.$2.com/',
+    query: [],
+    hash: false,
+  },
+  'item.m.jd.com': {/* JD mobile to PC */
+    testReg: /^http(?:s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?$/i,
+    replace: 'https://item.jd.com/$1.html',
+    query: [],
+    hash: false,
+  },
+  'weibo.com/u': {/* Weibo personal homepage to mobile */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
+    replace: 'https://m.weibo.cn/$1',
+    query: [],
+    hash: false,
+  },
+  'weibo.com': {/* Weibo article page to mobile */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
+    replace: 'https://m.weibo.cn/status/$1',
+    query: [],
+    hash: false,
+  },
+  'greasyfork.org': {/* Greasyfork Script */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-.*$/i,
+    replace: 'https://greasyfork.org/zh-CN/scripts/$1',
+    query: [],
+    hash: false,
+  },
+  'store.steampowered.com|steamcommunity.com': {/* Steam */
+    testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,
+    replace: 'https://$1.com/app/$2',
+    query: [],
+    hash: false,
+  },
+  'meta.appinn.com': {/* Appinn BBS */
+    testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
+    replace: 'https://meta.appinn.com/t/$1',
+    query: [],
+    hash: false,
+  },
+  'yangkeduo.com': {/* Pin Duo Duo product Page */
+    testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
+    replace: '',
+    query: ['goods_id'],
+    hash: false,
+  },
+  'other': {/* All url */
+    testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
+    replace: '',
+    query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword'],
+    hash: false,
   }
-  const url = window.location.href
-  const hash = window.location.hash
-  const base = window.location.href.replace(/(\?|#).*$/, '')
+}
+function dms_get_pure_url (url=window.location.href) {
+  const hash = url.replace(/^[^#]*(#.*)?$/, '$1')
+  const base = url.replace(/(\?|#).*$/, '')
   let pureUrl = url
   function getQueryString(key) {
-    let ret = window.location.search.match(new RegExp('(?:\\?|&)' + key + '=(.*?)(?:&|$|#)', 'i'))
+    let ret = url.match(new RegExp('(?:\\?|&)' + key + '=([^?#&]*)', 'i'))
     return ret === null ? '' : ret[1]
   }
   for(let i in rulers){
@@ -259,7 +277,7 @@ function dms_get_pure_url () {
           : ''
         }
       }
-      newQuerys += ruler.hash ? window.location.hash : ''
+      newQuerys += ruler.hash ? hash : ''
       pureUrl = (replace===''?base:base.replace(reg, replace) ) + newQuerys
       break
     }
@@ -276,6 +294,7 @@ const qrcode = document.getElementById('dms-lc-qrcode')
 const buttonTitle = document.getElementById('dmsCLButtonTitle')
 const buttonPure = document.getElementById('dmsCLButtonPure')
 const buttonLink = document.getElementById('dmsCLButtonLink')
+const buttonCleanLink = document.getElementById('dmsCLButtonCleanAll')
 const buttonCoffee = document.getElementById('dmsCLButtonCoffee')
 
 /**
@@ -317,4 +336,17 @@ buttonPure.addEventListener("click", () =>{
   GM_setClipboard(pureUrl)
   dmsCLNotification('链接地址已复制到剪切板中~')
   window.location.href = pureUrl
+}, false)
+/* 清理整个页面 */
+buttonCleanLink.addEventListener("click", () =>{
+  const aTagEles = document.getElementsByTagName('a')
+  for(let i=0; i<aTagEles.length; i++){
+    let theLink = aTagEles[i].href
+    if(theLink.match(/^(http:\/\/|https:\/\/|\/\/)/) !== null){
+      theLink = theLink.replace(/^\/\//, 'https://')
+      aTagEles[i].href = dms_get_pure_url(theLink)
+    }
+  }
+  panel.style.display = ''
+  dmsCLNotification('页面中所有链接已净化~\n可能导致部分链接无法使用，刷新后恢复。')
 }, false)
