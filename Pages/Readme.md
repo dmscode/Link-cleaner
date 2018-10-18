@@ -9,7 +9,7 @@ Greasemonkey（油猴子）版本：
 小书签安装：
 ---
 
-<a href="{{{theBookmarkletCode}}}">链接地址洗白白</a>**
+<a href="{{{theBookmarkletCode}}}">链接地址洗白白</a>
 
 （将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
 
