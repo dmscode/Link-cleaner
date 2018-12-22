@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.7
+// @version 0.0.8
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -39,8 +39,8 @@ document.body.insertBefore(dmsLCPopPanel, document.body.lastChild.nextSibling)
 
 /** 主功能函数 **/
 
-{{{rules.js}}}
-{{{main.js}}}
+{{{Scripts/rules.js}}}
+{{{Scripts/main.js}}}
 
 /** 事件响应函数 **/
 
@@ -82,7 +82,7 @@ buttonLink.addEventListener("click", () =>{ window.open('https://meta.appinn.com
 /* 复制标题和链接 */
 buttonTitle.addEventListener("click", () =>{
   const pureUrl = dms_get_pure_url()
-  const ttileAndUrl = document.title +' '+ pureUrl
+  const ttileAndUrl = document.title +' \n'+ pureUrl
   GM_setClipboard(ttileAndUrl)
   dmsCLNotification('网站标题 & 链接地址已复制到剪切板中~')
   window.location.href = pureUrl

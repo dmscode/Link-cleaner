@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.7
+// @version 0.0.8
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -158,7 +158,7 @@ document.body.insertBefore(dmsLCPopPanel, document.body.lastChild.nextSibling)
  * 规则说明：
  * 
  */
-const rulers = {
+const rules = {
   'www.bilibili.com': {/* Blibili */
     testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
     replace: 'https://www.bilibili.com/$1',
@@ -213,10 +213,16 @@ const rulers = {
     query: [],
     hash: false,
   },
+  'search.jd.com': {/* JD Search */
+    testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
+    replace: '',
+    query: [],
+    hash: false,
+  },
   'weibo.com/u': {/* Weibo personal homepage to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/$1',
-    query: [],
+    query: ['keyword', 'enc'],
     hash: false,
   },
   'weibo.com': {/* Weibo article page to mobile */
@@ -260,25 +266,23 @@ function dms_get_pure_url (url=window.location.href) {
   const hash = url.replace(/^[^#]*(#.*)?$/, '$1')
   const base = url.replace(/(\?|#).*$/, '')
   let pureUrl = url
-  function getQueryString(key) {
-    let ret = url.match(new RegExp('(?:\\?|&)' + key + '=([^?#&]*)', 'i'))
+  const getQueryString = function(key) {
+    let ret = url.match(new RegExp('(?:\\?|&)(' + key + '=[^?#&]*)', 'i'))
     return ret === null ? '' : ret[1]
   }
-  for(let i in rulers){
-    let ruler = rulers[i]
-    let reg = ruler.testReg
-    let replace = ruler.replace
+  for(let i in rules){
+    let rule = rules[i]
+    let reg = rule.testReg
+    let replace = rule.replace
     if (reg.test(url)){
-      let querys = ruler.query
       let newQuerys = ''
-      if(querys.length){
-        for(let query of querys){
-          newQuerys += getQueryString(query) !== ''
-          ? (newQuerys.length?'&':'?')+query+'='+getQueryString(query)
-          : ''
+      rule.query.map((query) => {
+        const ret = getQueryString(query)
+        if(ret !== ''){
+          newQuerys += (newQuerys.length ? '&' : '?') + ret
         }
-      }
-      newQuerys += ruler.hash ? hash : ''
+      })
+      newQuerys += rule.hash ? hash : ''
       pureUrl = (replace===''?base:base.replace(reg, replace) ) + newQuerys
       break
     }
@@ -326,7 +330,7 @@ buttonLink.addEventListener("click", () =>{ window.open('https://meta.appinn.com
 /* 复制标题和链接 */
 buttonTitle.addEventListener("click", () =>{
   const pureUrl = dms_get_pure_url()
-  const ttileAndUrl = document.title +' '+ pureUrl
+  const ttileAndUrl = document.title +' \n'+ pureUrl
   GM_setClipboard(ttileAndUrl)
   dmsCLNotification('网站标题 & 链接地址已复制到剪切板中~')
   window.location.href = pureUrl

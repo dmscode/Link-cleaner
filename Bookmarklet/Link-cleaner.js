@@ -1,7 +1,7 @@
 javascript: (function () {
   /** 主功能函数 **/
-  {{{rules.js}}}
-  {{{main.js}}}
+  {{{Scripts/rules.js}}}
+  {{{Scripts/main.js}}}
   const pureUrl = dms_get_pure_url()
   let newnode = document.createElement('input')
   newnode.id = 'pure-url-for-copy'

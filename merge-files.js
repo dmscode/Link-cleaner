@@ -58,7 +58,7 @@ const packFiles = function(path){
   return content
 }
 let Greasemonkey = packFiles('Greasemonkey/Script.js')
-fs.writeFile(filedir+'Greasemonkey/dist/Link-Cleaner.user.js',
+fs.writeFile(filedir+'dist/Link-Cleaner.user.js',
               Greasemonkey,
               (err) => { 
                 if (err) {
@@ -80,7 +80,7 @@ if(bookmarklet.error !== undefined){
 }
 
 let bookmarkletCode = bookmarklet.code.replace(/\(\);$/, ')();').replace(/^!/, 'javascript:(')
-fs.writeFile(filedir+'Bookmarklet/dist/Link-Cleaner.bookmarklet.js',
+fs.writeFile(filedir+'dist/Link-Cleaner.bookmarklet.js',
               bookmarkletCode,
               (err) => { 
                 if (err) {

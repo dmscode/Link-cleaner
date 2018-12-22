@@ -5,7 +5,7 @@
  * 规则说明：
  * 
  */
-const rulers = {
+const rules = {
   'www.bilibili.com': {/* Blibili */
     testReg: /^http(?:s)?:\/\/www\.bilibili\.com\/video\/(av\d+).*$/i,
     replace: 'https://www.bilibili.com/$1',
@@ -60,10 +60,16 @@ const rulers = {
     query: [],
     hash: false,
   },
+  'search.jd.com': {/* JD Search */
+    testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
+    replace: '',
+    query: [],
+    hash: false,
+  },
   'weibo.com/u': {/* Weibo personal homepage to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/$1',
-    query: [],
+    query: ['keyword', 'enc'],
     hash: false,
   },
   'weibo.com': {/* Weibo article page to mobile */
