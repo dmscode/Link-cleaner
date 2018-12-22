@@ -63,13 +63,13 @@ const rules = {
   'search.jd.com': {/* JD Search */
     testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
     replace: '',
-    query: [],
+    query: ['keyword', 'enc'],
     hash: false,
   },
   'weibo.com/u': {/* Weibo personal homepage to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/$1',
-    query: ['keyword', 'enc'],
+    query: [],
     hash: false,
   },
   'weibo.com': {/* Weibo article page to mobile */
