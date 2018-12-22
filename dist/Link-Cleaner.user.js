@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.9
+// @version 0.0.10
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -168,98 +168,76 @@ const rules = {
   'itunes.apple.com': {/* Apple Stroe */
     testReg: /^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
     replace: 'https://itunes.apple.com/cn/$1/$2',
-    query: [],
-    hash: false
   },
   'chrome.google.com/webstore': {/* Chrome Store */
     testReg: /^http(?:s)?:\/\/chrome\.google\.com\/webstore\/detail\/[^\/]+\/([a-z]{32}).*/i,
     replace: 'https://chrome.google.com/webstore/detail/$1',
-    query: [],
-    hash: false
   },
   's.taobao.com': {/* Taobao Search */
     testReg: /^http(?:s)?:\/\/s\.taobao\.com\/search.*$/i,
     replace: 'https://s.taobao.com/search',
     query: ['q'],
-    hash: false,
   },
   'list.tmall.com': {/* Tmall Search */
     testReg: /^http(?:s)?:\/\/list\.tmall\.com\/search_product\.htm.*$/i,
     replace: 'https://list.tmall.com/search_product.htm',
     query: ['q'],
-    hash: false,
   },
   'item.taobao.com': {/* Taobao item */
     testReg: /^http(?:s)?:\/\/item\.taobao\.com\/item\.htm.*$/i,
     replace: 'https://item.taobao.com/item.htm',
     query: ['id'],
-    hash: false,
   },
   'detail.tmall.com': {/* Tmall item */
     testReg: /^http(?:s)?:\/\/detail\.tmall\.com\/item\.htm.*$/i,
     replace: 'https://detail.tmall.com/item.htm',
     query: ['id'],
-    hash: false,
   },
   'taobao/tmall.com/shop': {/* Taobao/Tmall Shop */
     testReg: /^http(?:s)?:\/\/(\w+)\.(taobao|tmall)\.com\/shop\/view_shop\.htm.*$/i,
     replace: 'https://$1.$2.com/',
+  },
+  'c.pc.qq.com': {/* Open Taobao share link from QQ */
+    testReg: /^http(?:s)?:\/\/c\.pc\.qq\.com\/middle.html\?.*pfurl=([^&]*)(?:&.*$|$)/i,
+    replace: '$1',
     query: [],
-    hash: false,
+    methods: ['decodeUrl'],
   },
   'item.m.jd.com': {/* JD mobile to PC */
     testReg: /^http(?:s)?:\/\/item\.m\.jd\.com\/product\/(\d+)\.html(\?.*)?$/i,
     replace: 'https://item.jd.com/$1.html',
-    query: [],
-    hash: false,
   },
   'search.jd.com': {/* JD Search */
     testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
-    replace: '',
     query: ['keyword', 'enc'],
-    hash: false,
   },
   'weibo.com/u': {/* Weibo personal homepage to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/$1',
-    query: [],
-    hash: false,
   },
   'weibo.com': {/* Weibo article page to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/status/$1',
-    query: [],
-    hash: false,
   },
   'greasyfork.org': {/* Greasyfork Script */
     testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-.*$/i,
     replace: 'https://greasyfork.org/zh-CN/scripts/$1',
-    query: [],
-    hash: false,
   },
   'store.steampowered.com|steamcommunity.com': {/* Steam */
     testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,
     replace: 'https://$1.com/app/$2',
-    query: [],
-    hash: false,
   },
   'meta.appinn.com': {/* Appinn BBS */
     testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
     replace: 'https://meta.appinn.com/t/$1',
-    query: [],
-    hash: false,
   },
   'yangkeduo.com': {/* Pin Duo Duo product Page */
     testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
-    replace: '',
     query: ['goods_id'],
-    hash: false,
   },
   'other': {/* All url */
     testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
-    replace: '',
     query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword'],
-    hash: false,
   }
 }
 function dms_get_pure_url (url=window.location.href) {
@@ -270,20 +248,33 @@ function dms_get_pure_url (url=window.location.href) {
     let ret = url.match(new RegExp('(?:\\?|&)(' + key + '=[^?#&]*)', 'i'))
     return ret === null ? '' : ret[1]
   }
+  /* 链接处理方法 */
+  const methods = {
+    decodeUrl: function(url){return decodeURIComponent(url) }
+  }
   for(let i in rules){
     let rule = rules[i]
     let reg = rule.testReg
     let replace = rule.replace
     if (reg.test(url)){
       let newQuerys = ''
-      rule.query.map((query) => {
-        const ret = getQueryString(query)
-        if(ret !== ''){
-          newQuerys += (newQuerys.length ? '&' : '?') + ret
-        }
-      })
-      newQuerys += rule.hash ? hash : ''
-      pureUrl = (replace===''?base:base.replace(reg, replace) ) + newQuerys
+      if(typeof(rule.query)!=='undefined' && rule.query.length>0){
+        rule.query.map((query) => {
+          const ret = getQueryString(query)
+          if(ret !== ''){
+            newQuerys += (newQuerys.length ? '&' : '?') + ret
+          }
+        })
+      }
+      newQuerys += typeof(rule.hash)!=='undefined' && rule.hash
+                   ? hash
+                   : ''
+      pureUrl = (typeof(replace)==='undefined'?base:url.replace(reg, replace) ) + newQuerys
+      if(typeof(rule.methods)!=='undefined' && rule.methods.length>0){
+        rule.methods.map((methodName)=>{
+          pureUrl = methods[methodName](pureUrl)
+        })
+      }
       break
     }
   }
