@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.11
+// @version 0.0.12
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -413,3 +413,11 @@ buttonCleanLink.addEventListener("click", () =>{
   dmsCLNotification('页面中所有链接已净化~\n可能导致部分链接无法使用，刷新后恢复。')
   dmsLCToggleEl(panel)
 }, false)
+/* 全屏隐藏按钮 */
+document.addEventListener("fullscreenchange", function( event ) {
+  if (document.fullscreenElement) {
+    button.style.display = 'none'
+  } else {
+    button.style.display = ''
+  }
+});
