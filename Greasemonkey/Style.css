@@ -14,17 +14,18 @@
   margin: 0 auto;
   width: 24px;
   height: 12px;
-  color: #999;
+  color: rgba(0, 0, 0, .3);
   font-size: 12px;
   line-height: 10px;
   cursor: pointer;
   text-align: center;
   border: 1px solid #AAA;
   border-radius: 12px 12px 0 0;
-  background-color: rgba(255, 255, 255, .6);
+  background-color: rgba(255, 255, 255, .3);
   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
 }
 #dms-lc-button:hover {
+  color: rgba(0, 0, 0, .8);
   background-color: rgba(255, 255, 255, 0.8);
 }
 #dms-lc-panel {
@@ -47,6 +48,7 @@
   position: relative;
 }
 #dms-lc-panel > #dms-lc-panel-content > .dms-lc-button {
+  position: relative;
   padding: 8px 16px;
   margin: 0 8px 0 0;
   font-size: 16px;
@@ -62,6 +64,34 @@
   color: #FFF;
   font-weight: normal;
 }
+#dms-lc-panel > #dms-lc-panel-content > .dms-lc-button:hover::before {
+  content: attr(data-tip);
+  background-color: rgba(0, 0, 0, .9);
+  border-radius:3px;
+  color: #fff;
+  padding: 10px;
+  position: absolute;
+  width: calc(100% + 20px);
+  left: 50%;
+  bottom: calc(100% + 10px);
+  margin-left: calc(-50% - 20px);
+  white-space: pre;
+}
+#dms-lc-panel > #dms-lc-panel-content > .dms-lc-button:hover::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: calc(50% - 8px);
+  top: -10px;
+  border-top: 8px solid rgba(0, 0, 0, .8);
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+#dms-lc-panel > #dms-lc-panel-content > .dms-lc-hr {
+  width: 100%;
+  margin: 5px 0;
+}
 #dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee {
   padding: 0;
   margin: 0;
@@ -70,23 +100,23 @@
   width: 35px;
   height: 35px;
 }
-#dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee > #dms-lc-qrcode {
+#dms-lc-panel > #dms-lc-panel-content > #dms-lc-qrcode {
   display: none;
   width: 100%;
 
   position: absolute;
   left: 0;
-  bottom: 100px;
+  bottom: calc(100% + 24px);
   padding: 16px;
   color: #333;
   font-size: 18px;
   line-height: 1.2em;
-  border: 1px solid #AAA;
+  border: 1px solid #CCC;
   border-radius: 12px 12px 0 0;
   background-color: #FFF;
-  box-shadow: 0 1px 12px rgba(0, 0, 0, .15);
+  box-shadow: 0 6px 36px 5px rgba(0, 0, 0, .16);
 }
-#dms-lc-panel > #dms-lc-panel-content > #dmsCLButtonCoffee > #dms-lc-qrcode > img {
+#dms-lc-panel > #dms-lc-panel-content > #dms-lc-qrcode > img {
   width: 30%;
   max-width: 180px;
 }

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.10
+// @version 0.0.11
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -47,11 +47,18 @@ document.body.insertBefore(dmsLCPopPanel, document.body.lastChild.nextSibling)
 /* 定义元素 */
 const button = document.getElementById('dms-lc-button')
 const panel = document.getElementById('dms-lc-panel')
+
 const qrcode = document.getElementById('dms-lc-qrcode')
+
 const buttonTitle = document.getElementById('dmsCLButtonTitle')
 const buttonPure = document.getElementById('dmsCLButtonPure')
-const buttonLink = document.getElementById('dmsCLButtonLink')
+
+const buttonCopyT = document.getElementById('dmsCLButtonCopyTitle')
+const buttonCopyL = document.getElementById('dmsCLButtonCopyLink')
+
 const buttonCleanLink = document.getElementById('dmsCLButtonCleanAll')
+
+const buttonLink = document.getElementById('dmsCLButtonLink')
 const buttonCoffee = document.getElementById('dmsCLButtonCoffee')
 
 /**
@@ -69,7 +76,7 @@ const dmsLCToggleEl = function(el){
  * 弹出通知
  */
 const dmsCLNotification = function(text){
-  GM_notification(text, '链接地址洗白白', '{{{logo.png}}}')
+  GM_notification(text, 'Success! by 链接地址洗白白', '{{{logo.png}}}')
 }
 
 /** 添加监听器 **/
@@ -79,20 +86,34 @@ button.addEventListener("click", () =>{ dmsLCToggleEl(panel) }, false)
 buttonCoffee.addEventListener("click", () =>{ dmsLCToggleEl(qrcode) }, false)
 /* 支持链接 */
 buttonLink.addEventListener("click", () =>{ window.open('https://meta.appinn.com/t/7363', '_blank'); }, false)
-/* 复制标题和链接 */
+/* 净化并复制标题和链接 */
 buttonTitle.addEventListener("click", () =>{
   const pureUrl = dms_get_pure_url()
   const ttileAndUrl = document.title +' \n'+ pureUrl
   GM_setClipboard(ttileAndUrl)
-  dmsCLNotification('网站标题 & 链接地址已复制到剪切板中~')
+  dmsCLNotification('链接地址已净化，并和网站标题一起复制到剪切板中~')
   window.location.href = pureUrl
 }, false)
-/* 只复制链接 */
+/* 净化并复制链接 */
 buttonPure.addEventListener("click", () =>{
   const pureUrl = dms_get_pure_url()
   GM_setClipboard(pureUrl)
-  dmsCLNotification('链接地址已复制到剪切板中~')
+  dmsCLNotification('链接地址已净化并复制到剪切板中~')
   window.location.href = pureUrl
+}, false)
+/* 复制当前链接和标题 */
+buttonCopyT.addEventListener("click", () =>{
+  const theUrl = document.title +' \n'+ window.location.href
+  GM_setClipboard(theUrl)
+  dmsCLNotification('网站标题 & 链接地址已复制到剪切板中~')
+  dmsLCToggleEl(panel)
+}, false)
+/* 复制当前链接 */
+buttonCopyL.addEventListener("click", () =>{
+  const theUrl = window.location.href
+  GM_setClipboard(theUrl)
+  dmsCLNotification('链接地址已复制到剪切板中~')
+  dmsLCToggleEl(panel)
 }, false)
 /* 清理整个页面 */
 buttonCleanLink.addEventListener("click", () =>{
@@ -106,4 +127,5 @@ buttonCleanLink.addEventListener("click", () =>{
   }
   panel.style.display = ''
   dmsCLNotification('页面中所有链接已净化~\n可能导致部分链接无法使用，刷新后恢复。')
+  dmsLCToggleEl(panel)
 }, false)
