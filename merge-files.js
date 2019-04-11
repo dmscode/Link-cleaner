@@ -60,7 +60,7 @@ const packFiles = function(path){
 let Greasemonkey = packFiles('Greasemonkey/Script.js')
 fs.writeFile(filedir+'dist/Link-Cleaner.user.js',
               Greasemonkey,
-              (err) => { 
+              (err) => {
                 if (err) {
                   return console.error(err);
                 }

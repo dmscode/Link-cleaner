@@ -58,14 +58,14 @@ const rules = {
     testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
     query: ['keyword', 'enc'],
   },
-  'weibo.com/u': {/* Weibo personal homepage to mobile */
-    testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
-    replace: 'https://m.weibo.cn/$1',
-  },
-  'weibo.com': {/* Weibo article page to mobile */
-    testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
-    replace: 'https://m.weibo.cn/status/$1',
-  },
+  // 'weibo.com/u': {/* Weibo personal homepage to mobile */
+  //   testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
+  //   replace: 'https://m.weibo.cn/$1',
+  // },
+  // 'weibo.com': {/* Weibo article page to mobile */
+  //   testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
+  //   replace: 'https://m.weibo.cn/status/$1',
+  // },
   'greasyfork.org': {/* Greasyfork Script */
     testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-.*$/i,
     replace: 'https://greasyfork.org/zh-CN/scripts/$1',
