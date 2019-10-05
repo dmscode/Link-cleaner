@@ -62,6 +62,10 @@ const rules = {
     testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
     query: ['keyword', 'enc'],
   },
+  're.jd.com': {/* JD hot sell */
+    testReg: /^http(?:s)?:\/\/re\.jd\.com\/cps\/item\/(\d+)\.html.*$/i,
+    replace: 'https://item.jd.com/$1.html',
+  },
   'weibo.com/u': {/* Weibo personal homepage to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/$1',
@@ -79,7 +83,7 @@ const rules = {
     replace: 'https://$1.com/app/$2',
   },
   'meta.appinn.com': {/* Appinn BBS */
-    testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
+    testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*)*?\/(\d+)(\/.*$|$)/i,
     replace: 'https://meta.appinn.com/t/$1',
   },
   'yangkeduo.com': {/* Pin Duo Duo product Page */

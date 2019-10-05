@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.0.14
+// @version 0.0.15
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -260,6 +260,10 @@ const rules = {
     testReg: /^http(?:s)?:\/\/search\.jd\.com\/Search\?.*$/i,
     query: ['keyword', 'enc'],
   },
+  're.jd.com': {/* JD hot sell */
+    testReg: /^http(?:s)?:\/\/re\.jd\.com\/cps\/item\/(\d+)\.html.*$/i,
+    replace: 'https://item.jd.com/$1.html',
+  },
   'weibo.com/u': {/* Weibo personal homepage to mobile */
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/u\/(\d+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/$1',
@@ -277,7 +281,7 @@ const rules = {
     replace: 'https://$1.com/app/$2',
   },
   'meta.appinn.com': {/* Appinn BBS */
-    testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*[^/0-9][^/]*)*\/(\d+)(\/.*$|$)/i,
+    testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*)*?\/(\d+)(\/.*$|$)/i,
     replace: 'https://meta.appinn.com/t/$1',
   },
   'yangkeduo.com': {/* Pin Duo Duo product Page */
