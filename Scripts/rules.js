@@ -83,8 +83,8 @@ const rules = {
     replace: 'https://$1.com/app/$2',
   },
   'meta.appinn.com': {/* Appinn BBS */
-    testReg: /^http(?:s)?:\/\/meta\.appinn\.com\/t(?:\/[^/]*)*?\/(\d+)(\/.*$|$)/i,
-    replace: 'https://meta.appinn.com/t/$1',
+    testReg: /^http(?:s)?:\/\/meta\.appinn\.net\/t(?:\/[^/]*)*?\/(\d+)(\/.*$|$)/i,
+    replace: 'https://meta.appinn.net/t/$1',
   },
   'yangkeduo.com': {/* Pin Duo Duo product Page */
     testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
