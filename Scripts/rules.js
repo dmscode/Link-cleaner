@@ -1,7 +1,7 @@
 /**
  * 链接净化规则
- * version 0.0.1
- * update 2018-10-18 11:52:26
+ * version 0.0.2
+ * update 2020-05-29 09:10:44
  * 规则说明：
  * 
  */
@@ -85,6 +85,10 @@ const rules = {
   'meta.appinn.com': {/* Appinn BBS */
     testReg: /^http(?:s)?:\/\/meta\.appinn\.net\/t(?:\/[^/]*)*?\/(\d+)(\/.*$|$)/i,
     replace: 'https://meta.appinn.net/t/$1',
+  },
+  'amazon.co.jp': {/* amazon.co.jp */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?amazon\.co\.jp\/([^\/]+)\/dp\/(\w+)\/.*$/i,
+    replace: 'https://www.amazon.co.jp/$1/dp/$2',
   },
   'yangkeduo.com': {/* Pin Duo Duo product Page */
     testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,

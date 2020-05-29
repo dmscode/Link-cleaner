@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.1.0
+// @version 0.1.1
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -34,8 +34,8 @@
 
 /**
  * 链接净化规则
- * version 0.0.1
- * update 2018-10-18 11:52:26
+ * version 0.0.2
+ * update 2020-05-29 09:10:44
  * 规则说明：
  * 
  */
@@ -119,6 +119,10 @@ const rules = {
   'meta.appinn.com': {/* Appinn BBS */
     testReg: /^http(?:s)?:\/\/meta\.appinn\.net\/t(?:\/[^/]*)*?\/(\d+)(\/.*$|$)/i,
     replace: 'https://meta.appinn.net/t/$1',
+  },
+  'amazon.co.jp': {/* amazon.co.jp */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?amazon\.co\.jp\/([^\/]+)\/dp\/(\w+)\/.*$/i,
+    replace: 'https://www.amazon.co.jp/$1/dp/$2',
   },
   'yangkeduo.com': {/* Pin Duo Duo product Page */
     testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
