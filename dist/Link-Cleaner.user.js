@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.1.1
+// @version 0.1.2
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/eva0t1TJ.png
@@ -188,14 +188,14 @@ const getCleanUrlAndTitle = () => {
   const ttileAndUrl = document.title + ' \n' + pureUrl;
   GM_setClipboard(ttileAndUrl);
   dmsCLNotification('链接地址已净化，并和网站标题一起复制到剪切板中~');
-  window.location.href = pureUrl;
+  if(window.location.href !== pureUrl) window.location.href = pureUrl;
 };
 /* 复制净化后的链接 */
 const getCleanUrl = () => {
   const pureUrl = dms_get_pure_url();
   GM_setClipboard(pureUrl);
   dmsCLNotification('链接地址已净化并复制到剪切板中~');
-  window.location.href = pureUrl;
+  if(window.location.href !== pureUrl) window.location.href = pureUrl;
 };
 /* 直接复制页面链接和标题 */
 const getUrlAndTitle = () => {
