@@ -2,11 +2,11 @@
 
 ## Greasemonkey（油猴子）版本：
 
-[https://greasyfork.org/zh-CN/scripts/373270](https://greasyfork.org/zh-CN/scripts/373270)
+[https://greasyfork.org/scripts/373270](https://greasyfork.org/scripts/373270)
 
 ## 小书签安装：
 
-<a href="{{{theBookmarkletCode}}}">链接地址洗白白</a>
+<a href="```theBookmarkletCode```">链接地址洗白白</a>
 
 （将上方链接拖拽到书签栏即可，如上方不是链接，则先点击 **下面链接**）
 
@@ -49,7 +49,7 @@
 
 ## 更新日期：
 
-2020-05-29
+![](https://img.shields.io/badge/Version-```version```-blue?style=for-the-badge) **```nowTime```**
 
 ## 请我喝杯咖啡吧
 

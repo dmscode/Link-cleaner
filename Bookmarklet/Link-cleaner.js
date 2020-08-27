@@ -1,7 +1,8 @@
 javascript: (function () {
+  console.info('Version: ```version```')
   /** 主功能函数 **/
-  {{{Scripts/rules.js}}}
-  {{{Scripts/main.js}}}
+  ```scripts_rules_js```
+  ```scripts_main_js```
   const pureUrl = dms_get_pure_url()
   let newnode = document.createElement('input')
   newnode.id = 'pure-url-for-copy'

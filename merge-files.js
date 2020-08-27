@@ -82,7 +82,7 @@ if(bookmarklet.error !== undefined){
 let bookmarkletCode = bookmarklet.code.replace(/\(\);$/, ')();').replace(/^!/, 'javascript:(')
 fs.writeFile(filedir+'dist/Link-Cleaner.bookmarklet.js',
               bookmarkletCode,
-              (err) => { 
+              (err) => {
                 if (err) {
                   return console.error(err);
                 }
@@ -91,7 +91,7 @@ fs.writeFile(filedir+'dist/Link-Cleaner.bookmarklet.js',
 let readme = readFileContent('Pages/Readme.md').replace(/{{{theBookmarkletCode}}}/, bookmarkletCode)
 fs.writeFile(filedir+'Readme.md',
   readme,
-  (err) => { 
+  (err) => {
     if (err) {
       return console.error(err);
     }

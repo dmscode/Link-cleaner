@@ -1,7 +1,7 @@
 /**
  * 链接净化规则
- * version 0.0.2
- * update 2020-05-29 09:10:44
+ * version 0.0.3
+ * update 2020-08-27 12:10:04
  * 规则说明：
  * 
  */
@@ -15,6 +15,14 @@ const rules = {
   'itunes.apple.com': {/* Apple Stroe */
     testReg: /^http(?:s)?:\/\/itunes\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
     replace: 'https://itunes.apple.com/cn/$1/$2',
+  },
+  'apps.apple.com': {/* Apple Stroe */
+    testReg: /^http(?:s)?:\/\/apps\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
+    replace: 'https://www.microsoft.com/store/apps/$1/$2',
+  },
+  'microsoft.com/win10-store': {/* Win10 apps store */
+    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/(?:[\w-]+)\/([a-z0-9]{12})(?:[^a-z0-9]|$)/i,
+    replace: 'https://www.microsoft.com/store/apps/$1',
   },
   'chrome.google.com/webstore': {/* Chrome Store */
     testReg: /^http(?:s)?:\/\/chrome\.google\.com\/webstore\/detail\/[^\/]+\/([a-z]{32}).*/i,
@@ -74,9 +82,18 @@ const rules = {
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/status/$1',
   },
-  'greasyfork.org': {/* Greasyfork Script */
-    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-.*$/i,
-    replace: 'https://greasyfork.org/zh-CN/scripts/$1',
+  'greasyfork.org/script': {/* Greasyfork Script 脚本页面 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*$/i,
+    replace: 'https://greasyfork.org/scripts/$1',
+  },
+  'greasyfork.org/script/discussions': {/* Greasyfork Script 脚本评论页 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*\/discussions\/(\d+)$/i,
+    replace: 'https://greasyfork.org/scripts/$1/discussions/$2',
+    hash: true
+  },
+  'greasyfork.or/users': {/* Greasyfork Script 用户页面 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?users\/(\d+)-[^//]*$/i,
+    replace: 'https://greasyfork.org/users/$1',
   },
   'store.steampowered.com|steamcommunity.com': {/* Steam */
     testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,

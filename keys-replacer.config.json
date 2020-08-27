@@ -1,0 +1,47 @@
+{
+  "files": [
+    {
+      "in": "./Greasemonkey/Script.js",
+      "out": "./dist/Link-Cleaner.user.js"
+    },
+    {
+      "in": "./Bookmarklet/Link-Cleaner.js",
+      "out": "./dist/Link-Cleaner.bookmarklet.js",
+      "minify": true,
+      "bookmarklet": true
+    },
+    {
+      "in": "./Pages/Readme.md",
+      "out": "./Readme.md"
+    }
+  ],
+  "keys": {
+    "version": "0.1.4"
+  },
+  "fileKeys": [
+    {
+      "key": "scripts_rules_js",
+      "file": "./Scripts/rules.js"
+    },
+    {
+      "key": "scripts_main_js",
+      "file":"./Scripts/main.js"
+    },
+    {
+      "key": "greasymonkey_style",
+      "file": "./Greasemonkey/Style.css"
+    },
+    {
+      "key": "greasymonkey_DOM",
+      "file": "./Greasemonkey/DOM.html"
+    },
+    {
+      "key": "theBookmarkletCode",
+      "file": "./dist/Link-Cleaner.bookmarklet.js"
+    }
+  ],
+  "imgKeys": [{
+    "key": "logo",
+    "file": "./logo.png"
+  }]
+}

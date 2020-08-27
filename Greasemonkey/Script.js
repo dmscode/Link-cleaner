@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.1.3
+// @version ```version```
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/vpQpSrfgl.png
@@ -32,12 +32,12 @@
 
 /** 主功能函数 **/
 
-{{{Scripts/rules.js}}}
-{{{Scripts/main.js}}}
+```scripts_rules_js```
+```scripts_main_js```
 /** 必须函数 */
 /* 弹出通知 */
 const dmsCLNotification = function (text) {
-  GM_notification(text, 'Success! by 链接地址洗白白', '{{{logo.png}}}');
+  GM_notification(text, 'Success! by 链接地址洗白白', '```logo```');
 };
 /* 打开支持页面 */
 const goToSupport = () => {
@@ -111,12 +111,12 @@ GM_registerMenuCommand('支持 & 反馈', goToSupport);
 if (isShowPageBar) {
   /** 添加样式 **/
   GM_addStyle(`
-  {{{Greasemonkey/Style.css}}}
+  ```greasymonkey_style```
   `);
   /** 添加界面 **/
   const dmsLCPopPanel = document.createElement('div');
   dmsLCPopPanel.id = 'dms-link-cleaner';
-  dmsLCPopPanel.innerHTML = `{{{Greasemonkey/DOM.html}}}`;
+  dmsLCPopPanel.innerHTML = ````greasymonkey_DOM````;
   document.body.insertBefore(
     dmsLCPopPanel,
     document.body.lastChild.nextSibling
