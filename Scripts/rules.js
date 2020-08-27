@@ -18,10 +18,10 @@ const rules = {
   },
   'apps.apple.com': {/* Apple Stroe */
     testReg: /^http(?:s)?:\/\/apps\.apple\.com\/(?:\w{2}\/)?([^\/]+)\/(?:[^\/]+\/)?((?:id)\d+).*$/i,
-    replace: 'https://www.microsoft.com/store/apps/$1/$2',
+    replace: 'https://apps.apple.com/cn/$1/$2',
   },
   'microsoft.com/win10-store': {/* Win10 apps store */
-    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/(?:[\w-]+)\/([a-z0-9]{12,})(?:[^a-z0-9]|$)/i,
+    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[\w-]+\/([a-z0-9]{12,})(?:[^a-z0-9]|$)/i,
     replace: 'https://www.microsoft.com/store/apps/$1',
   },
   'chrome.google.com/webstore': {/* Chrome Store */
@@ -82,18 +82,19 @@ const rules = {
     testReg: /^http(?:s)?:\/\/(?:www\.)?weibo\.com\/(?:\d+)\/(\w+)(\?.*)?$/i,
     replace: 'https://m.weibo.cn/status/$1',
   },
-  'greasyfork.org/script': {/* Greasyfork Script 脚本页面 */
-    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*$/i,
-    replace: 'https://greasyfork.org/scripts/$1',
-  },
-  'greasyfork.org/script/discussions': {/* Greasyfork Script 脚本评论页 */
-    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*\/discussions\/(\d+)$/i,
-    replace: 'https://greasyfork.org/scripts/$1/discussions/$2',
+  'greasyfork.org/script/tabs': {/* Greasyfork Script 脚本下各种标签 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*\/(code|versions|stats|derivatives|admin).*$/i,
+    replace: 'https://greasyfork.org/scripts/$1/$2',
     hash: true
   },
-  'greasyfork.or/users': {/* Greasyfork Script 用户页面 */
-    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?users\/(\d+)-[^//]*$/i,
-    replace: 'https://greasyfork.org/users/$1',
+  'greasyfork.org': {/* Greasyfork Script 各类页面 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?(scripts|users)\/(\d+)-[^//]*$/i,
+    replace: 'https://greasyfork.org/$1/$2',
+  },
+  'greasyfork.org/script/discussions': {/* Greasyfork Script 脚本下讨论 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*\/discussions\/(\d+).*$/i,
+    replace: 'https://greasyfork.org/scripts/$1/discussions/$2',
+    hash: true
   },
   'store.steampowered.com|steamcommunity.com': {/* Steam */
     testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,
