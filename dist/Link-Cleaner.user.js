@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.1.5
+// @version 0.1.6
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/vpQpSrfgl.png
@@ -55,7 +55,7 @@ const rules = {
     replace: 'https://apps.apple.com/cn/$1/$2',
   },
   'microsoft.com/win10-store': {/* Win10 apps store */
-    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[\w-]+\/([a-z0-9]{12,})(?:[^a-z0-9]|$)/i,
+    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[\w-]+\/([a-z0-9]{12,})(?:[^a-z0-9].*|$)/i,
     replace: 'https://www.microsoft.com/store/apps/$1',
   },
   'chrome.google.com/webstore': {/* Chrome Store */
