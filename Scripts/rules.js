@@ -96,6 +96,11 @@ const rules = {
     replace: 'https://greasyfork.org/scripts/$1/discussions/$2',
     hash: true
   },
+  'greasyfork.org/discussions': {/* Greasyfork Script 论坛 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?discussions\/(greasyfork|development|requests)\/(\d+)(?:[^\d].*)?$/i,
+    replace: 'https://greasyfork.org/discussions/$1/$2',
+    hash: true
+  },
   'store.steampowered.com|steamcommunity.com': {/* Steam */
     testReg: /^http(?:s)?:\/\/(store\.steampowered|steamcommunity)\.com\/app\/(\d+).*$/i,
     replace: 'https://$1.com/app/$2',
