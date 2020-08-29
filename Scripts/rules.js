@@ -1,7 +1,7 @@
 /**
  * 链接净化规则
- * version 0.0.3
- * update 2020-08-27 12:10:04
+ * version 0.0.4
+ * update 2020-08-29 22:34:32
  * 规则说明：
  * 
  */
@@ -21,7 +21,7 @@ const rules = {
     replace: 'https://apps.apple.com/cn/$1/$2',
   },
   'microsoft.com/win10-store': {/* Win10 apps store */
-    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[\w-]+\/([a-z0-9]{12,})(?:[^a-z0-9].*|$)/i,
+    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[\w-]+\/([a-zA-Z0-9]{12,})(?:[^a-zA-Z0-9].*|$)/i,
     replace: 'https://www.microsoft.com/store/apps/$1',
   },
   'chrome.google.com/webstore': {/* Chrome Store */
