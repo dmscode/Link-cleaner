@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.1.7
+// @version 0.1.8
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/vpQpSrfgl.png
@@ -124,6 +124,10 @@ const rules = {
   'greasyfork.org': {/* Greasyfork Script 各类页面 */
     testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?(scripts|users)\/(\d+)-[^//]*$/i,
     replace: 'https://greasyfork.org/$1/$2',
+  },
+  'greasyfork.org/scripts/list': {/* Greasyfork Script 脚本列表 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\?.*$/i,
+    query: ['set', 'page']
   },
   'greasyfork.org/script/discussions': {/* Greasyfork Script 脚本下讨论 */
     testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*\/discussions\/(\d+).*$/i,

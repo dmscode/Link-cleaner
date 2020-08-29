@@ -91,6 +91,10 @@ const rules = {
     testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?(scripts|users)\/(\d+)-[^//]*$/i,
     replace: 'https://greasyfork.org/$1/$2',
   },
+  'greasyfork.org/scripts/list': {/* Greasyfork Script 脚本列表 */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\?.*$/i,
+    query: ['set', 'page']
+  },
   'greasyfork.org/script/discussions': {/* Greasyfork Script 脚本下讨论 */
     testReg: /^http(?:s)?:\/\/(?:www\.)?greasyfork\.org\/(?:[\w-]*\/)?scripts\/(\d+)-[^//]*\/discussions\/(\d+).*$/i,
     replace: 'https://greasyfork.org/scripts/$1/discussions/$2',
