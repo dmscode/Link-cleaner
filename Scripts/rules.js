@@ -1,7 +1,7 @@
 /**
  * 链接净化规则
- * version 0.0.4
- * update 2020-08-29 22:34:32
+ * version 0.0.5
+ * update 2020-09-01 07:07:37
  * 规则说明：
  * 
  */
@@ -21,7 +21,7 @@ const rules = {
     replace: 'https://apps.apple.com/cn/$1/$2',
   },
   'microsoft.com/win10-store': {/* Win10 apps store */
-    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[\w-]+\/([a-zA-Z0-9]{12,})(?:[^a-zA-Z0-9].*|$)/i,
+    testReg: /^http(?:s)?:\/\/www\.microsoft\.com\/[a-zA-Z-]{2,5}\/p\/[^/]+\/([a-zA-Z0-9]{12,})(?:[^a-zA-Z0-9].*|$)/i,
     replace: 'https://www.microsoft.com/store/apps/$1',
   },
   'chrome.google.com/webstore': {/* Chrome Store */
@@ -120,6 +120,10 @@ const rules = {
   'yangkeduo.com': {/* Pin Duo Duo product Page */
     testReg: /^http(?:s)?:\/\/mobile\.yangkeduo\.com\/goods.html\?.*$/i,
     query: ['goods_id'],
+  },
+  'trello.com': {/* trello.com */
+    testReg: /^http(?:s)?:\/\/(?:www\.)?trello\.com\/(\w)\/(\w+)(\/.*$|$)/i,
+    replace: 'https://trello.com/$1/$2',
   },
   'other': {/* All url */
     testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
