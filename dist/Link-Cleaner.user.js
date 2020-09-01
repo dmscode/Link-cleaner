@@ -158,6 +158,7 @@ const rules = {
   'trello.com': {/* trello.com */
     testReg: /^http(?:s)?:\/\/(?:www\.)?trello\.com\/(\w)\/(\w+)(\/.*$|$)/i,
     replace: 'https://trello.com/$1/$2',
+    hash: true,
   },
   'other': {/* All url */
     testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
