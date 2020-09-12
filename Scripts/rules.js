@@ -128,6 +128,6 @@ const rules = {
   },
   'other': {/* All url */
     testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
-    query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword'],
+    query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword', 'keywords'],
   }
 }

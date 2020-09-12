@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 链接地址洗白白
 // @namespace Daomouse Link Cleaner
-// @version 0.1.10
+// @version 0.1.11
 // @author 稻米鼠
 // @description 把链接地址缩减至最短可用状态，并复制到剪切板，以方便分享。【在每个页面的底部中间，有一个小小的按钮，用来呼出面板】
 // @icon https://i.v2ex.co/vpQpSrfgl.png
@@ -162,7 +162,7 @@ const rules = {
   },
   'other': {/* All url */
     testReg: /^(http(?:s)?:\/\/[^?#]*)[?#].*$/i,
-    query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword'],
+    query: ['id', 'tid', 'uid', 'q', 'wd', 'query', 'keyword', 'keywords'],
   }
 }
 function dms_get_pure_url (url=window.location.href) {
