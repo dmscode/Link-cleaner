@@ -1,6 +1,18 @@
 {
   "files": [
     {
+      "in": "./Scripts/main-source.js",
+      "out": "./Scripts/main.js"
+    },
+    {
+      "in": "./Scripts/rules-source.js",
+      "out": "./Scripts/rules.js"
+    },
+    {
+      "in": "./Greasemonkey/DOM-source.html",
+      "out": "./Greasemonkey/DOM.html"
+    },
+    {
       "in": "./Greasemonkey/Script.js",
       "out": "./dist/Link-Cleaner.user.js"
     },
@@ -16,7 +28,9 @@
     }
   ],
   "keys": {
-    "version": "0.1.11"
+    "version": "0.1.12",
+    "rules-version": "0.0.5",
+    "main-version": "0.0.1"
   },
   "fileKeys": [
     {
@@ -40,8 +54,22 @@
       "file": "./dist/Link-Cleaner.bookmarklet.js"
     }
   ],
-  "imgKeys": [{
-    "key": "logo",
-    "file": "./logo.png"
-  }]
+  "imgKeys": [
+    {
+      "key": "logo",
+      "file": "./logo.png"
+    },
+    {
+      "key": "alipay",
+      "file": "./Greasemonkey/images/AliPay-360.png"
+    },
+    {
+      "key": "wepay",
+      "file": "./Greasemonkey/images/WePay-360.png"
+    },
+    {
+      "key": "qqpay",
+      "file": "./Greasemonkey/images/QQPay-360.png"
+    }
+  ]
 }

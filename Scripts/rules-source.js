@@ -1,6 +1,6 @@
 /**
  * 链接净化规则
- * version 0.0.5
+ * version ```rules-version```
  * update 2020-09-01 07:07:37
  */
 const rules = {
