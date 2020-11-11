@@ -1,7 +1,7 @@
 /**
  * 链接净化规则
  * version ```rules-version```
- * update 2020-09-01 07:07:37
+ * update ```rules-update```
  */
 const rules = {
   'www.bilibili.com': {/* Blibili */

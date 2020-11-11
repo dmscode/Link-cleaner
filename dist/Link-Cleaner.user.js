@@ -34,7 +34,7 @@
 
 /**
  * 链接净化规则
- * version ```rules-version```
+ * version 0.0.5
  * update 2020-09-01 07:07:37
  */
 const rules = {
@@ -165,7 +165,7 @@ const rules = {
 }
 /**
  * 主功能代码
- * version ```main-version```
+ * version 0.0.1
  * update 2020-09-01 07:07:37
  */
 function dms_get_pure_url (url=window.location.href) {

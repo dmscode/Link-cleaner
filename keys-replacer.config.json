@@ -30,7 +30,9 @@
   "keys": {
     "version": "0.1.12",
     "rules-version": "0.0.5",
-    "main-version": "0.0.1"
+    "rules-update": "2020-09-01 07:07:37",
+    "main-version": "0.0.1",
+    "main-update": "2018-10-15 08:00:00"
   },
   "fileKeys": [
     {

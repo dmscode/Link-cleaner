@@ -1,7 +1,7 @@
 /**
  * 主功能代码
  * version 0.0.1
- * update 2020-09-01 07:07:37
+ * update 2018-10-15 08:00:00
  */
 function dms_get_pure_url (url=window.location.href) {
   const hash = url.replace(/^[^#]*(#.*)?$/, '$1')

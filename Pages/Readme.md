@@ -51,9 +51,10 @@
 
 ![](https://img.shields.io/badge/Version-```version```-blue?style=for-the-badge) **```nowTime```**
 
-主功能代码版本：![](https://img.shields.io/badge/Main%20Version-```main-version```-yellow?style=for-the-badge)
+主功能代码版本：![](https://img.shields.io/badge/Main%20Version-```main-version```-yellow?style=for-the-badge) **```main-update```**
 
-规则版本：![](https://img.shields.io/badge/Rules%20Version-```rules-version```-pink?style=for-the-badge)
+规则版本：![](https://img.shields.io/badge/Rules%20Version-```rules-version```-pink?style=for-the-badge) **```rules-update```**
+
 
 ## 请我喝杯咖啡吧
 
